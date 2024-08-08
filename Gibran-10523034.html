@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url(bgnew.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding-top: 100px;
+        }
+
+        header {
+    background-color: #000000;
+    color: #fff;
+    text-align: center;
+    padding: 0px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; 
+        }
+         
+    }
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-logo {
+    width: 150px; 
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 30px;
+        }
+
+header p {
+    margin: 5px 0 0;
+        }
+        nav {
+            background-color: #42a5f6;
+            padding: 10px 0;
+            position: fixed;
+            top: 50;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #030303;
+            font-weight: bold;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #ffffff;
+        }
+
+        footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer-content p {
+    margin: 0;
+}
+
+        .contact-container, .product-container {
+            border: 3px solid #ffffff; 
+            border-radius: 8px; 
+            padding: 20px;
+            margin: 30px auto;
+            width: 90%;
+            background-color: rgba(0, 0, 0, 0.621); 
+            color: #ffffff;
+        }
+
+        .contact-container {
+            height: auto; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .contact-image {
+            width: 100%;
+            max-width: 200px; 
+            height: auto;
+            border-bottom: 3px solid #ffffff; 
+            margin-bottom: 20px; 
+        }
+
+        .info-container {
+            border: 3px solid #ffffff; 
+            border-radius: 8px; 
+            padding: 20px;
+            margin: 30px auto;
+            width: 90%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.621); 
+            color: #ffffff;
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 40px auto;
+        }
+
+        .product-card {
+            width: calc(33.33% - 20px);
+            margin: 10px;
+            box-shadow: 0 2px 5px rgb(0, 0, 0);
+            background-color: #43a8faba;
+            border-radius: 8px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        h2 {
+            margin-top: 10px;
+            color: #6eff86;
+        }
+
+        p {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        button {
+            background-color: #ed51f8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="LOGO.jpg" alt="Playstation Paradise Logo" class="header-logo">
+           
+        </div>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#product">Product</a></li>
+            <li><a href="#Contact">Contact</a></li>
+            <li><a href="#Info">Info</a></li>
+        </ul>
+    </nav>
+    
+    <section class="product" id="product">
+        <div class="product-container">
+            <div class="product-card">
+                <img src="PS2.jpeg" alt="Stik PS2">
+                <div class="product-info">
+                    <h2>Stik PlayStation 2</h2>
+                    <p>Rp.25.000</p>
+                    <button onclick="orderProduct('PS2')">Order Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="PS4.jpg" alt="Stik PS4">
+                <div class="product-info">
+                    <h2>Stik Playstation 4</h2>
+                    <p>Rp.100.000</p>
+                    <button onclick="orderProduct('PS4')">Order Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="PS5 costum.webp" alt="Stik PS5 Custom">
+                <div class="product-info">
+                    <h2>Stik PS5 Custom</h2>
+                    <p>Rp.180.000</p>
+                    <button onclick="orderProduct('PS5')">Order Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="PS5.jpeg" alt="Stik PS5">
+                <div class="product-info">
+                    <h2>Stik PS5</h2>
+                    <p>Rp.150.000</p>
+                    <button onclick="orderProduct('PS5')">Order Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="PS3.jpg" alt="Stik PS3">
+                <div class="product-info">
+                    <h2>Stik PS3</h2>
+                    <p>Rp.100.000</p>
+                    <button onclick="orderProduct('PS3')">Order Now</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <img src="Xbox.jpeg" alt="Xbox">
+                <div class="product-info">
+                    <h2>Xbox</h2>
+                    <p>Rp.200.000</p>
+                    <button onclick="orderProduct('Xbox')">Order Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact" id="Contact">
+        <div class="contact-container">
+            <img src="foto.jpg" alt="Contact Background" class="contact-image">
+            <h2>Kontak Kami</h2>
+            <p>Nama : Gibran Cikal Maulana</p>
+            <p>NIM: 10523034</p>
+            <p>Kelas: IS-1</p>
+            <p>Email: gibrancikalmaulana@gmail.com</p>
+        </div>
+    </section>
+
+    <section class="info" id="Info">
+        <div class="info-container">
+             <h2>Playstation Paradise</h2>
+             <p>Toko kami menjual berbagai peralatan Playstation dan juga Xbox. Kami juga menyediakan layanan custom untuk stik
+                sesuai dengan selera Anda.
+             </p>
+             <p><center>Hubungi kami lebih lanjut di Playstation.paradise@gmail.com</center></p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Playstation Paradise. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function orderProduct(productId) {
+
+            window.location.href = `order.html?product=${productId}`;
+        }
+    </script>
+</body>
+</html>
+

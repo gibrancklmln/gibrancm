@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Transaksi</title>
+    <style>
+        body {
+            background-image: url(bgnew.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding-top: 50px;
+        }
+        
+
+        nav {
+            background-color: #42a5f6;
+            padding: 10px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: #030303;
+            font-weight: bold;
+        }
+
+        .form-container, .invoice-container {
+            background-color: rgba(0, 0, 0, 0.621);
+            border: 3px solid #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px auto;
+            width: 80%;
+            max-width: 600px;
+            color: #ffffff;
+        }
+
+        h1 {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #ed51f8;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            display: block;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #d73b80;
+        }
+
+        .invoice-item {
+            margin-bottom: 15px;
+        }
+
+        .invoice-item label {
+            font-weight: bold;
+        }
+
+        .invoice-item p {
+            margin: 5px 0;
+        }
+
+        .total {
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="Gibran-10523034.html">Product</a></li>
+            <li><a href="#Contact">Contact</a></li>
+            <li><a href="#Info">Info</a></li>
+        </ul>
+    </nav>
+
+    <section class="form-section" id="transaction-section">
+        <div class="form-container">
+            <h1>Input Transaksi/Reservasi</h1>
+            <form id="transaction-form">
+                <label for="name">Nama:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Telepon:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="product">Produk:</label>
+                <select id="product" name="product" required>
+                    <option value="Stik PS3">Stik PS3</option>
+                    <option value="Stik PS2">Stik PS2</option>
+                    <option value="Stik PS4">Stik PS4</option>
+                    <option value="Stik PS5">Stik PS5</option>
+                    <option value="Stik PS5 Custom">Stik PS5 Custom</option>
+                    <option value="Stik XBox">Stik XBox</option>
+                </select>
+
+                <label for="quantity">Jumlah:</label>
+                <input type="number" id="quantity" name="quantity" required min="1">
+
+                <label for="message">Pesan (Opsional):</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+
+                <button type="button" onclick="submitForm()">Checkout/Buat Pesanan</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="invoice-section" id="invoice-section" style="display: none;">
+        <div class="invoice-container">
+            <h1>Struk/Invoice</h1>
+            <div class="invoice-item">
+                <label for="name">Nama:</label>
+                <p id="invoice-name"></p>
+            </div>
+
+            <div class="invoice-item">
+                <label for="email">Email:</label>
+                <p id="invoice-email"></p>
+            </div>
+
+            <div class="invoice-item">
+                <label for="phone">Telepon:</label>
+                <p id="invoice-phone"></p>
+            </div>
+
+            <div class="invoice-item">
+                <label for="product">Produk:</label>
+                <p id="invoice-product"></p>
+            </div>
+
+            <div class="invoice-item">
+                <label for="quantity">Jumlah:</label>
+                <p id="invoice-quantity"></p>
+            </div>
+
+            <div class="invoice-item">
+                <label for="message">Pesan:</label>
+                <p id="invoice-message"></p>
+            </div>
+
+            <div class="total">
+                <p>Total: Rp.<span id="invoice-total"></span></p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        
+        window.onload = function() {
+            const selectedProduct = localStorage.getItem('selectedProduct');
+            if (selectedProduct) {
+                document.getElementById('product').value = selectedProduct;
+            }
+        };
+
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const product = document.getElementById('product').value;
+            const quantity = document.getElementById('quantity').value;
+            const message = document.getElementById('message').value;
+
+            document.querySelector('.form-section').style.display = 'none';
+            document.querySelector('.invoice-section').style.display = 'block';
+
+            document.getElementById('invoice-name').textContent = name;
+            document.getElementById('invoice-email').textContent = email;
+            document.getElementById('invoice-phone').textContent = phone;
+            document.getElementById('invoice-product').textContent = product;
+            document.getElementById('invoice-quantity').textContent = quantity;
+            document.getElementById('invoice-message').textContent = message;
+
+            const prices = {
+                'Stik PS2': 25000,
+                'Stik PS4': 100000,
+                'Stik PS5': 150000,
+                'Stik PS3': 100000,
+                'Stik XBox': 200000,
+                'Stik PS5 Custom': 180000
+            };
+
+            const total = prices[product] * quantity;
+
+            document.getElementById('invoice-total').textContent = total.toLocaleString('id-ID');
+        }
+    </script>
+</body>
+</html>
